@@ -5,13 +5,13 @@ const routes = [
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/Login.vue')
+      component: () => import('@/views/Login.vue')//实现懒加载优化页面加载时间
     },
     {
       path: '/',
       name: 'main',
       component: () => import('@/views/Main.vue'),
-      redirect: '/home',
+      redirect: '/login',
       children:[
       ]
     },

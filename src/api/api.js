@@ -64,4 +64,12 @@ export default {
         data: params
         })
     },
+    getMallData(){
+        return request({
+            url: '/mall/getMallData',
+            method: 'get',
+            mock:true,
+            
+        })
+    }
 }; 

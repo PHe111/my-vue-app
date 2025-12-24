@@ -54,6 +54,9 @@ export const useAllDataStore=defineStore('allData',()=>{
         }
         const menu=state.value.menuList;
         const module=import.meta.glob('../views/**/*.vue')
+//import.meta.glob 是 Vite 内置的 API，作用是：
+//根据你传入的「文件路径匹配规则」，批量找到项目中符合规则的文件
+// ，并返回一个「键为文件路径、值为该文件动态导入函数」的对象。
         const routeArr=[]
         //处理后端传入的菜单转化成前端路由
         menu.forEach(item=>{
@@ -61,6 +64,7 @@ export const useAllDataStore=defineStore('allData',()=>{
                 item.children.forEach(val=>{
                     let url=`../views/${val.url}.vue`
                     val.component=module[url];
+                    //component渲染组件页面
                     routeArr.push(...item.children)
                 })
             }else{
@@ -94,6 +98,7 @@ export const useAllDataStore=defineStore('allData',()=>{
         state.value=initState();
         localStorage.removeItem('store')
     }
+    
     return{
         state,selectMenu,updateTags,updateMenuList,addMenu,clean
     }

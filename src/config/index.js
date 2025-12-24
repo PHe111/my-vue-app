@@ -1,3 +1,5 @@
+//先检查 Vite 提供的 import.meta.env.MODE 是否有值
+// （比如执行 npm run dev 时，它的值是 development）；
 const env=import.meta.env.MODE||'prod';
 const EnvConfig = {
     development:{
